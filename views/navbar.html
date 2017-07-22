@@ -1,0 +1,22 @@
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <button class="navbar-toggler hidden-md-up pull-xs-right" type="button" data-toggle="collapse" data-target="#navbar">&#x2630;</button>
+    <div class="navbar-nav collapse navbar-toggleable-sm" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/"><i class="icn-logo material-icons">bookmark_border</i>Bookworm</a>
+            <div class="nav-items clearfix">
+                {% if not currentUser %}
+                <a class="nav-item nav-link" href="register">Sign Up</a>
+                {% endif %}
+                <a class="nav-item nav-link" href="about">About</a>
+                <a class="nav-item nav-link" href="contact">Contact</a>
+                <a class="nav-item nav-link" href="profile">My Profile</a>
+                {% if currentUser %}
+                <img class="avatar img-circle hidden-xs-down" src="/images/avatar.png" alt="avatar"/>
+                <a class="btn btn-light pull-md-right" href="/logout">Log out</a>
+                {% else %}
+                <a class="btn btn-info pull-md-right" href="login">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
