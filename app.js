@@ -8,7 +8,11 @@ var MongoStore = require('connect-mongo')(session);
 var app = express();
 
 // mongodb connection
-mongoose.connect(config.connectionstring);
+mongoose.connect(config.connectionstring, {
+    useMongoClient: true,
+    promiseLibrary: global.Promise
+});
+
 var db = mongoose.connection;
 
 // Mongo database error log
