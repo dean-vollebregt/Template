@@ -3,7 +3,7 @@
 
 body {
 	background: #1d2a33 url('../images/BushWalk.jpg') no-repeat;
-	background-size: cover; 
+	background-size: cover;
 }
 
 a:hover {
@@ -12,10 +12,7 @@ a:hover {
 
 /* Component Styles */
 
-.navbar {
-	padding: 1rem 0;
-	background: rgba(0,0,0, .25);
-}
+
 .lead {
 	margin-bottom: 2.5rem;
 }
@@ -31,22 +28,12 @@ a:hover {
 
 /* Modifier Styles */
 
-.nav-items .nav-link {
-	margin: 0 1rem;
-}
-.navbar-brand {
-	margin: 0;
-}
-.navbar .nav-link,
-.navbar .btn {
-	text-transform: uppercase;
-	font-size: .95rem;
-}
+
 .list-group {
 	color: initial;
 }
 .label {
-	font-size: .88r\em;
+	font-size: .88rem;
 	vertical-align: top;
 	margin: 3px 0 0 4px;
 }
@@ -57,10 +44,6 @@ a:hover {
 	background: #417aba;
 	border-color: #417aba;
 }
-.btn-primary:hover {
-	background: #0275d8;
-}
-
 .btn-info {
 	background-color: #31b0d5;
 	border-color: #2aabd2;
@@ -74,29 +57,12 @@ a:hover {
 	background: rgba(255,255,255, .12);
 }
 .btn-light:hover {
-	background: rgba(255,255,255, .2);	
+	background: rgba(255,255,255, .2);
 }
 .active,
 .btn {
 	transition: .4s;
 }
-
-.btn {
-	display: inline-block;
-	padding: .375rem 1rem;
-	font-size: 1rem;
-	font-weight: 400;
-	line-height: 1.5;
-	text-align: center;
-	white-space: nowrap;
-	vertical-align: middle;
-	cursor: pointer;
-	user-select: none;
-	border: 1px solid transparent;
-	border-radius: .25rem;
-	transition: .4s;
-}
-
 
 /* Icon Styles */
 
@@ -132,103 +98,21 @@ a:hover {
 }
 
 .favorite-book {
-  margin-top: 30px;
+	margin-top: 30px;
 }
 
 /* Media Queries */
 
 @media (min-width: 0) and (max-width: 47em) {
-	.navbar {
-		background: #1d2a33;
-	}
-	.nav-items .nav-item {
-		float: none;
-	}
-	.nav-items .nav-link  {
-		padding: .65rem 0;
-		display: block;
-	}
-	.nav-items {
-		padding: 1rem 0;
-		clear: left;
-	}
-	.navbar .btn {
-		margin-left: 1rem;
-	}
+
 	.main {
 		padding-top: 6rem;
 	}
-
-	/* Form Sizing */
-
-	.col-md-6 {
-		width: 40%;
-	}
-
-	.col-md-offset-3 {
-		margin-left: 30%;
-	}
 }
 
-@media (min-width: 48em) { 
-	.navbar {
-		min-height: 70px;
-	}
-	.navbar-nav .container {
-		display: -webkit-flex;
-		display: flex;
-	}
-	.nav-items {
-		margin-right: auto;
-		margin-left: auto;
-	}
+@media (min-width: 48em) {
+
 	.main {
 		padding-top: 8rem;
 	}
-
-	/* Form Sizing */
-
-	.col-md-6 {
-		width: 40%;
-	}
-
-	.col-md-offset-3 {
-		margin-left: 30%;
-	}
-
-}
-
-/* Form */
-
-form {
-	display: block;
-	margin-top: 0em;
-}
-
-.display-4 {
-	font-size: 3.5rem;
-	font-weight: 300;
-}
-
-.m-b-2 {
-	margin-bottom: 1.5rem!important;
-}
-
-.form-control {
-	display: block;
-	width: 100%;
-	padding: .375rem .75rem;
-	font-size: 1rem;
-	line-height: 1.5;
-	color: #55595c;
-	background-color: #fff;
-	background-image: none;
-	border: 1px solid #ccc;
-	border-radius: .25rem;
-}
-
-label {
-	display: inline-block;
-	margin-bottom: .5rem;
-	margin-top: .5rem;
 }
