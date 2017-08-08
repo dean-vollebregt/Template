@@ -1,0 +1,50 @@
+
+/* Media Queries */
+
+@media (min-width: 0) and (max-width: 47em) {
+
+    .main {
+        padding-top: 6rem;
+    }
+
+
+    /* Form Sizing */
+    .col-md-offset-3 {
+        margin-left: 30%;
+    }
+
+    .col-md-6 {
+        width: 40%;
+    }
+
+}
+
+
+@media (min-width: 48em) {
+
+    .main {
+        padding-top: 8rem;
+    }
+
+    /* text Alignment */
+    .col-md-offset-2 {
+        margin-left: 16.666667%;
+    }
+
+    .col-md-8 {
+        width: 66.666667%;
+    }
+
+
+    /* Form Sizing */
+
+    .col-md-offset-3 {
+        margin-left: 30%;
+    }
+    .col-md-6 {
+        width: 40%;
+
+    }
+
+
+}

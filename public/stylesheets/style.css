@@ -10,6 +10,28 @@ a:hover {
 	color: rgba(49,176,213, .7);
 }
 
+.m-b-2 {
+	margin-bottom: 1.5rem!important;
+}
+
+
+.lead {
+	margin-bottom: 2.5rem;
+	font-size: 1.25rem;
+	font-weight: 300;
+}
+
+.display-3 {
+	font-size: 4.5rem;
+	font-weight: 300;
+}
+
+.display-4 {
+	font-size: 3.5rem;
+	font-weight: 300;
+}
+
+
 /* Component Styles */
 
 
@@ -117,46 +139,6 @@ a:hover {
 	color: initial;
 }
 
-.favorite-book {
-	margin-top: 30px;
-}
-
-/* Media Queries */
-
-@media (min-width: 0) and (max-width: 47em) {
-
-	.main {
-		padding-top: 6rem;
-	}
-
-	/* Form Sizing */
-
-	.col-md-6 {
-		width: 40%;
-	}
-
-	.col-md-offset-3 {
-		margin-left: 30%;
-	}
-}
-
-@media (min-width: 48em) {
-
-	.main {
-		padding-top: 8rem;
-	}
-
-	/* Form Sizing */
-
-	.col-md-6 {
-		width: 40%;
-	}
-
-	.col-md-offset-3 {
-		margin-left: 30%;
-	}
-
-}
 
 /* Form */
 
@@ -165,14 +147,6 @@ form {
 	margin-top: 0em;
 }
 
-.display-4 {
-	font-size: 3.5rem;
-	font-weight: 300;
-}
-
-.m-b-2 {
-	margin-bottom: 1.5rem!important;
-}
 
 .form-control {
 	display: block;
@@ -192,3 +166,10 @@ label {
 	margin-bottom: .5rem;
 	margin-top: .5rem;
 }
+
+/* Home */
+.text-xs-center {
+	text-align: center!important;
+}
+
+

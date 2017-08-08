@@ -12,6 +12,8 @@
 /* Modifier Styles */
 .nav-items .nav-link {
     margin: 0 1rem;
+    color: white;
+
 }
 .navbar-brand {
     margin: 0;
@@ -24,9 +26,7 @@
 
 
 @media (min-width: 0) and (max-width: 47em) {
-    .navbar {
-        background: #1d2a33;
-    }
+
 
     .nav-items .nav-item {
         float: none;
