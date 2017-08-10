@@ -3,10 +3,19 @@
 <div class="main container clearfix">
     <div class="row">
         <div class="navbar8  col-md-offset-2">
-            <h1 class="title-styling"><img class="avatar img-circle hidden-xs-down" src="/images/avatar.png" alt="avatar"/></h1>
-            <span>{{ name }}</span>
-            <h2 class="favorite-walk">Favorite Trail</h2>
-            <span>{{ favourite }}</span>
+            <script rel="javascript" src="/javascript/weather.js"></script>
+
+            <h1 class="title-styling">
+                <img class="avatar img-circle hidden-xs-down" src="/images/avatar.png" alt="avatar"/>
+                <span>Hello {{ name }}!</span>
+            </h1>
+            <h2 class="favorite-walk">Your favorite trail</h2>
+            <span>{{ favorite }}</span>
+
+            <h2>Todays Weather</h2>
+            <div class="insertWeather">
+                <ul id ="weatherItems"> </ul>
+            </div>
         </div>
     </div>
 </div>
