@@ -1,27 +1,35 @@
 
-function getWeather() {
-    return fetch("http://api.openweathermap.org/data/2.5/weather?");
+function getGeoLocation() {
+    function storeLocal(position) {
+        localStorage.setItem("lat", position.coords.latitude);
+        localStorage.setItem("long", position.coords.longitude);
+    }
+    navigator.geolocation.getCurrentPosition(storeLocal);
+}
+
+function getLocal(){
+    return { lat : localStorage.getItem("lat"), long : localStorage.getItem("long")};
+}
+
+function getWeather(coordinates) {
+    return fetch(`https://api.sunrise-sunset.org/json?lat=${coordinates.lat}&lng=${coordinates.long}&date=today&formatted=0`);
 }
 
 function addWeatherToPage(weatherIn) {
-    let temp = weatherIn.main.temp;
-    let outlook = weatherIn.weather["0"].description;
-    let humidity = weatherIn.main.humidity + "%";
-    let sunrise = (new Date(weatherIn.sys.sunrise*1000)).toLocaleTimeString();
-    let sunset = (new Date(weatherIn.sys.sunset*1000)).toLocaleTimeString();
+    let sunrise = new Date(weatherIn.results.sunrise).toLocaleTimeString('en-US');
+    let sunset = new Date(weatherIn.results.sunset).toLocaleTimeString('en-US');
 
-    document.getElementById('weatherItems').innerHTML =
-          "<li>" + "temperature - " + temp / 30 + "</li>" + "</br>"
-        + "<li>" + "outlook - " + outlook + "</li>" + "</br>"
-        + "<li>" + "humidity - " + humidity + "</li>" + "</br>"
-        + "<li>" + "sunrise - " + sunrise + "</li>" + "</br>"
-        + "<li>" + "sunset - " + sunset + "</li>";
+    document.getElementById('insertWeather').innerHTML =
+        "<li>" + "Sunrise :" + sunrise + "</li>" + "</br>"
+        + "<li>" + "Sunset :" + sunset + "</li>";
 }
 
 (async function(){
     try {
-        const weather = await getWeather();
-        const weatherObject = await weather.json();
+        getGeoLocation();
+        let coordinates = await getLocal();
+        let weatherQuery = await getWeather(coordinates);
+        let weatherObject = await weatherQuery.json();
         addWeatherToPage(weatherObject);
     }
     catch(err){
