@@ -69,5 +69,8 @@ app.use(function(err, req, res, next) {
 
 // listen on port 3000
 app.listen(3000, function () {
-  console.log('listening on 300 app redirected to port 80');
+  console.log('listening on 300 app redirected to port 443');
 });
+
+
+// iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 3000

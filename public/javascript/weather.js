@@ -7,7 +7,7 @@ function getGeoLocation() {
     navigator.geolocation.getCurrentPosition(storeLocal);
 }
 
-function getLocal(){
+function getLocalStorageItems(){
     return { lat : localStorage.getItem("lat"), long : localStorage.getItem("long")};
 }
 
@@ -27,7 +27,7 @@ function addWeatherToPage(weatherIn) {
 (async function(){
     try {
         getGeoLocation();
-        let coordinates = await getLocal();
+        let coordinates = await getLocalStorageItems();
         let weatherQuery = await getWeather(coordinates);
         let weatherObject = await weatherQuery.json();
         addWeatherToPage(weatherObject);
