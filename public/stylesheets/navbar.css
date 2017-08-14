@@ -1,5 +1,13 @@
 /* Font Sizes */
 
+#walkrLogo {
+    color: white;
+    font-family: 'Raleway';
+    font-size: 48px;
+    line-height: 1;
+    padding: 10px;
+
+}
 
 /* Component Styles */
 

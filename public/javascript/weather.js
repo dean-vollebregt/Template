@@ -17,6 +17,7 @@ function getLocalStorageItems(){
     return { lat : localStorage.getItem("lat"), long : localStorage.getItem("long")};
 }
 
+// https://sunrise-sunset.org/api
 function getWeather(coordinates) {
     return fetch(`https://api.sunrise-sunset.org/json?lat=${coordinates.lat}&lng=${coordinates.long}&date=today&formatted=0`);
 }

@@ -1,8 +1,10 @@
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+
     <div class="navbar-nav collapse navbar-toggleable-sm" id="navbar">
         <div class="container">
-            <a class="nav-item nav-link" href="/">Lets Walk</a>
+            <div id="walkrLogo" href="/">Walkr</div>
             <div class="nav-items clearfix">
+
                 {% if not currentUser %}
                 <a class="nav-item nav-link" href="register">Sign Up</a>
                 {% endif %}
