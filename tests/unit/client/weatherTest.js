@@ -3,7 +3,7 @@ let assert = chai.assert;
 let expect = chai.expect;
 
 describe('getGeoLocation', function() {
-    it('should store a given users location', function() {
+    it('should test for geolocation', function() {
         expect(navigator.geolocation).to.have.property('getCurrentPosition');
     });
 });
