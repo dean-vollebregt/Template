@@ -1,8 +1,8 @@
 {
-  "name": "treehouse-express-auth",
+  "name": "walkr",
   "version": "1.0.0",
-  "description": "A project for learning how to add authentication to a web application.",
-  "author": "Treehouse Island, Inc.",
+  "description": "A NodeJs walking site application ",
+  "author": "Dean Vollebregt",
   "private": true,
   "scripts": {
     "start": "node ./app"
@@ -19,6 +19,8 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
     "nodemon": "^1.11.0"
   }
 }

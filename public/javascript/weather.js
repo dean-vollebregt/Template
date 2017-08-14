@@ -4,7 +4,13 @@ function getGeoLocation() {
         localStorage.setItem("lat", position.coords.latitude);
         localStorage.setItem("long", position.coords.longitude);
     }
-    navigator.geolocation.getCurrentPosition(storeLocal);
+    function error(error) {
+        if (error.code) {
+            window.alert("Please allow geolocation and refresh your browser")
+        }
+    }
+    navigator.geolocation.getCurrentPosition(storeLocal,error);
+
 }
 
 function getLocalStorageItems(){
@@ -20,8 +26,8 @@ function addWeatherToPage(weatherIn) {
     let sunset = new Date(weatherIn.results.sunset).toLocaleTimeString('en-US');
 
     document.getElementById('insertWeather').innerHTML =
-        "<li>" + "Sunrise :" + sunrise + "</li>" + "</br>"
-        + "<li>" + "Sunset :" + sunset + "</li>";
+        "<li>" + "Sunrise " + sunrise + "</li>" + "</br>" +
+        "<li>" + "Sunset " + sunset + "</li>";
 }
 
 (async function(){
@@ -29,8 +35,8 @@ function addWeatherToPage(weatherIn) {
         getGeoLocation();
         let coordinates = await getLocalStorageItems();
         let weatherQuery = await getWeather(coordinates);
-        let weatherObject = await weatherQuery.json();
-        addWeatherToPage(weatherObject);
+        let weatherResult = await weatherQuery.json();
+        addWeatherToPage(weatherResult);
     }
     catch(err){
         console.error(err);
