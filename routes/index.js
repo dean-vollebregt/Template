@@ -1,7 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var User = require('../models/user');
-var mid = require('../middleware');
+let express = require('express');
+let router = express.Router();
+let User = require('../models/user');
+let mid = require('../middleware');
+let request = require('request');
 
 // GET /profile
 router.get('/profile', mid.requiresLogin, function(req, res, next) {
@@ -15,7 +16,36 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
             if (error) {
                 return next(error);
             } else {
-                return res.render('profile', { title: 'Profile', name: user.name, favorite: user.favoriteWalk})
+
+                function getWeather() {
+
+                    let url = `http://api.openweathermap.org/data/2.5/weather?q=Adelaide,AU&APPID=807e8e44e022aacc43a5211f2c523477&units=metric`;
+                    request({url: url, json: true}, function (err, res, json) {
+                        if (err) {
+                            throw err;
+                        }
+                        else {
+                            let weatherObj = {
+                                "temp": json.main.temp,
+                                "outlook": json.weather["0"].description,
+                                "humidity": json.main.humidity,
+                                "sunrise": (new Date(json.sys.sunrise*1000)).toLocaleTimeString(),
+                                "sunset": (new Date(json.sys.sunset*1000)).toLocaleTimeString()
+                            };
+                            renderResult(weatherObj);
+                        }
+                    });
+                }
+
+                function renderResult(weatherObj) {
+                    return res.render('profile',
+                        { title: 'Profile', name: user.name, favorite: user.favoriteWalk,
+                            temp: weatherObj.temp, outlook: weatherObj.outlook, humidity: weatherObj.humidity,
+                            sunrise: weatherObj.sunrise, sunset: weatherObj.sunset
+                        })
+                }
+
+                getWeather();
             }
         });
 });

@@ -3,7 +3,7 @@
 <div class="main container clearfix">
     <div class="row">
         <div class="navbar8  col-md-offset-2">
-            <script rel="javascript" src="/javascript/weather.js"></script>
+            <!--<script rel="javascript" src="/javascript/weather.js"></script>-->
 
             <h1 class="title-styling">
                 <img class="avatar img-circle hidden-xs-down" src="/images/avatar.png" alt="avatar"/>
@@ -14,7 +14,13 @@
 
             <h2>Todays Weather</h2>
             <div class="weatherItems">
-                <ul id ="insertWeather"> </ul>
+                <ul id ="insertWeather">
+                    <li>Temp {{ temp }} degrees</li>
+                    <li>Outlook {{ outlook }}</li>
+                    <li>Humidity {{ humidity }} %</li>
+                    <li>Sunrise {{ sunrise }}</li>
+                    <li>Sunset {{ sunset }}</li>
+                </ul>
             </div>
         </div>
     </div>
