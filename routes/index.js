@@ -3,6 +3,7 @@ let router = express.Router();
 let User = require('../models/user');
 let mid = require('../middleware');
 let request = require('request');
+const config = require('../config.js');
 
 // GET /profile
 router.get('/profile', mid.requiresLogin, function(req, res, next) {
@@ -19,7 +20,7 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
 
                 function getWeather() {
 
-                    let url = `http://api.openweathermap.org/data/2.5/weather?q=Adelaide,AU&APPID=807e8e44e022aacc43a5211f2c523477&units=metric`;
+                    let url = config.apikey;
                     request({url: url, json: true}, function (err, res, json) {
                         if (err) {
                             throw err;
@@ -32,12 +33,12 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
                                 "sunrise": (new Date(json.sys.sunrise*1000)).toLocaleTimeString(),
                                 "sunset": (new Date(json.sys.sunset*1000)).toLocaleTimeString()
                             };
-                            renderResult(weatherObj);
+                            renderProfile(weatherObj);
                         }
                     });
                 }
 
-                function renderResult(weatherObj) {
+                function renderProfile(weatherObj) {
                     return res.render('profile',
                         { title: 'Profile', name: user.name, favorite: user.favoriteWalk,
                             temp: weatherObj.temp, outlook: weatherObj.outlook, humidity: weatherObj.humidity,
