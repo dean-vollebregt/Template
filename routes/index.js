@@ -26,12 +26,12 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
                         })
                 }
 
-                async function get() {
+                async function getWeatherData() {
                     let weatherObj = await require('../middleware/weather').getWeather();
                     renderProfile(weatherObj);
                 }
 
-                get();
+                getWeatherData();
 
             }
         });
