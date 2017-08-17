@@ -1,4 +1,3 @@
-let request = require('request');
 
 function loggedOut(req, res, next) {
     if (req.session && req.session.userId) {
@@ -19,3 +18,4 @@ function requiresLogin(req, res, next) {
 
 module.exports.loggedOut = loggedOut;
 module.exports.requiresLogin = requiresLogin;
+

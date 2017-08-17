@@ -1,57 +1,44 @@
 let express = require('express');
 let router = express.Router();
 let User = require('../models/user');
-let mid = require('../middleware');
-let request = require('request');
-const config = require('../config.js');
+let mid = require('../middleware/index');
 
 // GET /profile
 router.get('/profile', mid.requiresLogin, function(req, res, next) {
-    if (! req.session.userId ) {
-        var err = new Error("You are not authorized to view this page.");
+    if (!req.session.userId) {
+        let err = new Error("You are not authorized to view this page.");
         err.status = 403;
         return next(err);
     }
+
     User.findById(req.session.userId)
         .exec(function (error, user) {
             if (error) {
                 return next(error);
             } else {
 
-                function getWeather() {
-
-                    let url = config.apikey;
-                    request({url: url, json: true}, function (err, res, json) {
-                        if (err) {
-                            throw err;
-                        }
-                        else {
-                            let weatherObj = {
-                                "temp": json.main.temp,
-                                "outlook": json.weather["0"].description,
-                                "humidity": json.main.humidity,
-                                "sunrise": (new Date(json.sys.sunrise*1000)).toLocaleTimeString(),
-                                "sunset": (new Date(json.sys.sunset*1000)).toLocaleTimeString()
-                            };
-                            renderProfile(weatherObj);
-                        }
-                    });
-                }
-
                 function renderProfile(weatherObj) {
                     return res.render('profile',
-                        { title: 'Profile', name: user.name, favorite: user.favoriteWalk,
+                        {
+                            title: 'Profile', name: user.name, favorite: user.favoriteWalk,
                             temp: weatherObj.temp, outlook: weatherObj.outlook, humidity: weatherObj.humidity,
                             sunrise: weatherObj.sunrise, sunset: weatherObj.sunset
                         })
                 }
 
-                getWeather();
+                async function get() {
+                    let weatherObj = await require('../middleware/weather').getWeather();
+                    renderProfile(weatherObj);
+                }
+
+                get();
+
             }
         });
 });
 
-// GET /login
+
+//GET /login
 router.get('/login', mid.loggedOut, function(req, res, next) {
     return res.render('login', { title: 'Log In'});
 });

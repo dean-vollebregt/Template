@@ -14,14 +14,13 @@
     "express": "^4.13.4",
     "express-session": "^1.15.3",
     "mongoose": "^4.11.1",
-    "nunjucks": "^3.0.1",
-    "pug": "^2.0.0-beta2"
+    "node-fetch": "^1.7.2",
+    "nunjucks": "^3.0.1"
   },
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.1.1",
     "mocha": "^3.5.0",
-    "nodemon": "^1.11.0",
-    "request": "^2.81.0"
+    "nodemon": "^1.11.0"
   }
 }
