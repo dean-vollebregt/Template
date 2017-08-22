@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let User = require('../models/user');
+let User = require('../models/user').User;
 let mid = require('../middleware/index');
 
 // GET /profile
@@ -30,9 +30,7 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
                     let weatherObj = await require('../middleware/weather').getWeather();
                     renderProfile(weatherObj);
                 }
-
                 getWeatherData();
-
             }
         });
 });
@@ -97,7 +95,7 @@ router.post('/register', function(req, res, next) {
         }
 
         // create object with form input
-        var userData = {
+        let userData = {
             email: req.body.email,
             name: req.body.name,
             favoriteWalk: req.body.favoriteWalk,
@@ -115,7 +113,7 @@ router.post('/register', function(req, res, next) {
         });
 
     } else {
-        var err = new Error('All fields required.');
+        let err = new Error('All fields required.');
         err.status = 400;
         return next(err);
     }

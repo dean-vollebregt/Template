@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+let mongoose = require('mongoose');
+let bcrypt = require('bcrypt');
 
-var UserSchema = new mongoose.Schema({
+let UserSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -31,7 +31,7 @@ UserSchema.statics.authenticate = function(email, password, callback) {
             if (error) {
                 return callback(error);
             } else if ( !user ) {
-                var err = new Error('User not found.');
+                let err = new Error('User not found.');
                 err.status = 401;
                 return callback(err);
             }
@@ -58,4 +58,4 @@ UserSchema.pre('save', function(next) {
 });
 
 var User = mongoose.model('User', UserSchema);
-module.exports = User;
+module.exports.User = User;
